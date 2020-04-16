@@ -6,6 +6,7 @@ Flipping the breadboard on its side will deactivate the tilt switch and turn
 off the alarm.
 
 TECHNOLOGIES: Energia IDE, Arduino IDE, C++
+
 HARDWARE:
 - TIVA tm4C123 Launchpad
 - x1 breadboard
