@@ -1,5 +1,5 @@
 # LEDetector
-An armed motion detector activated via photosenstivity
+An armed motion detector activated by photosensitive resistor
 
 This alarm also utilizes a tilt switch to either arm or disarm the detector. 
 Flipping the breadboard on its side will deactivate the tilt switch and turn 
