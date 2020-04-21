@@ -25,79 +25,79 @@ void setup()
 
 void loop()
 {
-  int lightLevel = analogRead(analogPin); // Read the light level from analog pin 2
-  int PWM_RESOLUTION = 255; // this variable will hold our resolution.
-  Serial.println(lightLevel); // Print the analog value to Serial
+  int lightLevel = analogRead(analogPin); // Read the light level
+  int MAX_RES = 255; // this variable will hold our resolution.
+  Serial.println(lightLevel); // Print the analog value to Serial (used to test sensor)
 
   // default mode is off, unless triggered by moving person
-   int greenVal = PWM_RESOLUTION; // max voltage will give us no color
-   int blueVal = PWM_RESOLUTION;
-   int redVal = PWM_RESOLUTION;
+   int greenVal = MAX_RES; // max voltage will give us no color
+   int blueVal = MAX_RES;
+   int redVal = MAX_RES;
    analogWrite( RED, redVal );
    analogWrite( GREEN, greenVal );
    analogWrite( BLUE, blueVal ); 
 
-     // the darker the environment, the greater the reading of resistance in ohms
+     // the darker the environment, the greater the reading
     if (lightLevel > 570) {
 
 
       // Turns on the rainbow LED
       for (int i; i < 2; i += 1){
     
-         // full red
-         int redVal = 0; // zero voltage will give us full color
-         int greenVal = PWM_RESOLUTION; // max voltage will give us no color
-         int blueVal = PWM_RESOLUTION; // max voltage will give us no color
+         // begins as full red
+         int redVal = 0; 
+         int greenVal = MAX_RES;
+         int blueVal = MAX_RES; 
          analogWrite( RED, redVal );
          analogWrite( GREEN, greenVal );
          analogWrite( BLUE, blueVal );
         
-         // Fade from red to green
-         for( int i = 0 ; i < PWM_RESOLUTION ; i += 1 ){
+         // Changes from red to green
+         for( int i = 0 ; i < MAX_RES ; i += 1 ){
            greenVal -= 1;
            redVal += 1;
-           analogWrite( RED, redVal ); // set the new red value
-           analogWrite( GREEN, greenVal ); // set the new green value
+           analogWrite( RED, redVal ); // sets to redVal
+           analogWrite( GREEN, greenVal ); // sets to greenVal
           
            delay( delayTime ); // wait for how long delay time is
          }
         
-         // full green
-         redVal = PWM_RESOLUTION; // max voltage will give us no color
-         greenVal = 0; // zero voltage will give us full color
-         blueVal = PWM_RESOLUTION; // max voltage will give us no color
+         // changes to full green
+         redVal = MAX_RES; 
+         greenVal = 0; 
+         blueVal = MAX_RES; 
          analogWrite( RED, redVal );
          analogWrite( GREEN, greenVal );
          analogWrite( BLUE, blueVal );
       
-         // Fade from green to blue 
-         for( int i = 0 ; i < PWM_RESOLUTION ; i += 1 ){
+         // Change from green to blue 
+         for( int i = 0 ; i < MAX_RES ; i += 1 ){
            blueVal -= 1;
            greenVal += 1;
-           analogWrite( BLUE, blueVal ); // set the new blue value
-           analogWrite( GREEN, greenVal ); // set the new green value
+           analogWrite( BLUE, blueVal ); // sets blueVal
+           analogWrite( GREEN, greenVal ); // sets greenVal
           
            delay( delayTime ); // wait for how long delay time is
          }
         
-         // full blue
-         redVal = PWM_RESOLUTION; // max voltage will give us no color
-         greenVal = PWM_RESOLUTION; // max voltage will give us no color
-         blueVal = 0; // zero voltage will give us full color
+         // changes to full blue.
+         redVal = MAX_RES; 
+         greenVal = MAX_RES; 
+         blueVal = 0; 
          analogWrite( RED, redVal );
          analogWrite( GREEN, greenVal );
          analogWrite( BLUE, blueVal );
       
          // fade from blue to red 
-         for( int i = 0 ; i < PWM_RESOLUTION ; i += 1 ){
+         for( int i = 0 ; i < MAX_RES ; i += 1 ){
            redVal -= 1;
            blueVal += 1;
-           analogWrite( RED, redVal ); // set the new red value
-           analogWrite( BLUE, blueVal ); // set the new blue value
+           analogWrite( RED, redVal ); // sets redVal
+           analogWrite( BLUE, blueVal ); // sets blueVal
           
            delay( delayTime ); // wait for how long delay time is
       }
     }
   }
-  delay(100); // delay for 1 second
+  delay(100); // delay for 0.1 seconds
  }
